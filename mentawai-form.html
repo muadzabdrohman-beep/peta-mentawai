@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Peta Desa Mentawai · Form Relawan</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:   #1c2b1e;
+  --moss:     #3a5c3e;
+  --leaf:     #5a8c5e;
+  --mist:     #e8efe9;
+  --sand:     #f2ede6;
+  --terracotta: #b85c38;
+  --amber:    #d4922a;
+  --white:    #fafaf8;
+  --ink:      #1a1f1b;
+  --mid:      #4a5c4d;
+  --light:    #8fa892;
+  --border:   #d0dbd1;
+  --error:    #c0392b;
+  --success:  #27ae60;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 2px 12px rgba(28,43,30,0.10);
+  --shadow-lg: 0 8px 32px rgba(28,43,30,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--sand);
+  color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ─────────────────────────────────── */
+.site-header {
+  background: var(--forest);
+  color: var(--white);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+.header-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-logo {
+  width: 38px; height: 38px;
+  background: var(--leaf);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.header-text {}
+.header-text h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  color: var(--white);
+}
+.header-text p {
+  font-size: 11.5px;
+  color: var(--leaf);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.header-progress {
+  margin-left: auto;
+  text-align: right;
+}
+.progress-label {
+  font-size: 11px;
+  color: var(--light);
+  margin-bottom: 4px;
+}
+.progress-bar {
+  width: 80px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--amber);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+/* ── HERO INTRO ─────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+  color: var(--white);
+  padding: 40px 20px 36px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(90,140,94,0.3);
+  border: 1px solid rgba(90,140,94,0.5);
+  color: #a8d4ac;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.hero h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.hero h2 span { color: #a8d4ac; }
+.hero p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  max-width: 420px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.55);
+}
+.hero-meta-item .dot {
+  width: 6px; height: 6px;
+  background: var(--leaf);
+  border-radius: 50%;
+}
+
+/* ── STEP NAVIGATOR ─────────────────────────── */
+.steps-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.steps-nav::-webkit-scrollbar { display: none; }
+.steps-inner {
+  display: flex;
+  max-width: 680px;
+  margin: 0 auto;
+  min-width: max-content;
+}
+.step-tab {
+  padding: 13px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--light);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border-top: none; border-left: none; border-right: none;
+  font-family: 'Instrument Sans', sans-serif;
+}
+.step-tab .step-num {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--light);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.step-tab.active {
+  color: var(--forest);
+  border-bottom-color: var(--forest);
+}
+.step-tab.active .step-num {
+  background: var(--forest);
+  color: var(--white);
+}
+.step-tab.done .step-num {
+  background: var(--success);
+  color: var(--white);
+}
+.step-tab.done .step-num::after { content: '✓'; font-size: 10px; }
+.step-tab.done .step-num span { display: none; }
+
+/* ── MAIN CONTENT ───────────────────────────── */
+.main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+}
+
+/* ── SECTION CARDS ──────────────────────────── */
+.form-step {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.form-step.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.section-header {
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid var(--mist);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.section-icon {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.section-icon.green  { background: #e6f4e8; }
+.section-icon.blue   { background: #e6eef8; }
+.section-icon.amber  { background: #fdf3e3; }
+.section-icon.red    { background: #fce8e4; }
+.section-icon.purple { background: #f0ebfa; }
+.section-icon.teal   { background: #e4f5f3; }
+
+.section-title-group {}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.2;
+}
+.section-desc {
+  font-size: 12.5px;
+  color: var(--mid);
+  margin-top: 3px;
+}
+.section-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── FORM FIELDS ────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 480px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+label .req {
+  color: var(--terracotta);
+  font-size: 14px;
+  line-height: 1;
+}
+.hint {
+  font-size: 11.5px;
+  color: var(--light);
+  line-height: 1.5;
+  margin-top: -2px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--moss);
+  box-shadow: 0 0 0 3px rgba(58,92,62,0.1);
+}
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238fa892' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* ── RADIO & CHECKBOX CUSTOM ────────────────── */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.options-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 400px) {
+  .options-grid, .options-grid.cols-3 { grid-template-columns: 1fr; }
+}
+
+.opt-item {
+  position: relative;
+}
+.opt-item input {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.opt-item label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  transition: all 0.15s;
+  background: var(--white);
+  width: 100%;
+}
+.opt-item input:checked + label {
+  border-color: var(--moss);
+  background: #edf5ee;
+  color: var(--forest);
+  font-weight: 600;
+}
+.opt-item label .check-box {
+  width: 16px; height: 16px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.opt-item input[type="radio"] + label .check-box {
+  border-radius: 50%;
+}
+.opt-item input:checked + label .check-box {
+  background: var(--moss);
+  border-color: var(--moss);
+  color: white;
+  font-size: 9px;
+}
+.opt-item input:checked + label .check-box::after { content: '✓'; }
+
+/* ── SCALE SLIDER ───────────────────────────── */
+.scale-field {}
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--light);
+  margin-bottom: 6px;
+}
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--moss);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(58,92,62,0.3);
+}
+.scale-value {
+  text-align: center;
+  font-size: 22px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: var(--forest);
+  margin-top: 8px;
+}
+
+/* ── REPEATER ───────────────────────────────── */
+.repeater {}
+.repeater-item {
+  background: var(--mist);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.repeater-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.repeater-item-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--moss);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-remove {
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.btn-remove:hover { color: var(--error); }
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: none;
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--mid);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.btn-add:hover {
+  border-color: var(--moss);
+  color: var(--moss);
+  background: #edf5ee;
+}
+
+/* ── PHOTO UPLOAD ───────────────────────────── */
+.photo-upload {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.photo-upload:hover {
+  border-color: var(--moss);
+  background: #edf5ee;
+}
+.photo-upload input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+.photo-upload-icon { font-size: 32px; margin-bottom: 10px; }
+.photo-upload p { font-size: 13px; color: var(--mid); }
+.photo-upload small { font-size: 11.5px; color: var(--light); margin-top: 4px; display: block; }
+.photo-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.photo-thumb {
+  width: 70px; height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+
+/* ── NAVIGATION BUTTONS ─────────────────────── */
+.form-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  gap: 10px;
+  max-width: 680px;
+  margin: 0 auto;
+  z-index: 50;
+}
+.form-nav::before {
+  content: '';
+  position: absolute;
+  top: -20px; left: 0; right: 0;
+  height: 20px;
+  background: linear-gradient(to top, rgba(242,237,230,0.8), transparent);
+  pointer-events: none;
+}
+.btn {
+  padding: 13px 22px;
+  border-radius: var(--radius-sm);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 7px;
+}
+.btn-prev {
+  background: var(--mist);
+  color: var(--mid);
+  border: 1.5px solid var(--border);
+}
+.btn-prev:hover { background: var(--border); }
+.btn-next {
+  background: var(--forest);
+  color: var(--white);
+  flex: 1;
+  justify-content: center;
+}
+.btn-next:hover { background: var(--moss); }
+.btn-submit {
+  background: var(--terracotta);
+  color: var(--white);
+  flex: 1;
+  justify-content: center;
+}
+.btn-submit:hover { background: #9e4d2c; }
+
+/* ── SUCCESS STATE ──────────────────────────── */
+#success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+}
+#success-screen.visible { display: block; }
+.success-icon {
+  width: 80px; height: 80px;
+  background: #e6f4e8;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 24px;
+}
+#success-screen h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--forest);
+  margin-bottom: 12px;
+}
+#success-screen p {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 360px;
+  margin: 0 auto 28px;
+}
+.btn-reset {
+  background: var(--forest);
+  color: var(--white);
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+/* ── REQUIRED INDICATOR ─────────────────────── */
+.field.required label::after {
+  content: ' *';
+  color: var(--terracotta);
+  font-size: 13px;
+}
+
+/* ── INFO BOX ───────────────────────────────── */
+.info-box {
+  background: #fdf3e3;
+  border-left: 3px solid var(--amber);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: #7a5020;
+  line-height: 1.6;
+}
+.info-box strong { color: #5a3510; }
+
+/* ── DIVIDER ────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--mist);
+  margin: 4px 0;
+}
+
+/* ── CHAR COUNT ─────────────────────────────── */
+.textarea-wrap { position: relative; }
+.char-count {
+  position: absolute;
+  bottom: 8px; right: 10px;
+  font-size: 10.5px;
+  color: var(--light);
+  pointer-events: none;
+}
+
+/* ── GOOGLE SHEET SETUP CARD ────────────────── */
+.setup-card {
+  background: var(--forest);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.setup-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.setup-card p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 14px; }
+.setup-card .input-row { display: flex; gap: 8px; }
+.setup-card input {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: 'Instrument Sans', sans-serif;
+}
+.setup-card input::placeholder { color: rgba(255,255,255,0.35); }
+.setup-card input:focus {
+  outline: none;
+  border-color: var(--leaf);
+  box-shadow: none;
+}
+.setup-card .btn-save {
+  background: var(--amber);
+  color: var(--forest);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: 'Instrument Sans', sans-serif;
+  white-space: nowrap;
+}
+.setup-status {
+  font-size: 12px;
+  margin-top: 8px;
+  min-height: 16px;
+}
+.setup-status.ok { color: #a8d4ac; }
+.setup-status.err { color: #f1a8a0; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">🌿</div>
+    <div class="header-text">
+      <h1>Peta Desa Mentawai</h1>
+      <p>Form Pendataan Relawan</p>
+    </div>
+    <div class="header-progress">
+      <div class="progress-label" id="progress-label">Langkah 1/6</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="hero-section">
+  <div class="hero-badge">Blueprint · 2026</div>
+  <h2>Dokumentasi Kondisi<br><span>Desa Mentawai</span></h2>
+  <p>Form ini diisi oleh relawan lapangan untuk mendokumentasikan kondisi sosial, ekonomi, dan spiritual setiap desa secara terstruktur.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="dot"></div>6 seksi utama</div>
+    <div class="hero-meta-item"><div class="dot"></div>Mobile-friendly</div>
+    <div class="hero-meta-item"><div class="dot"></div>Tersimpan ke Google Sheets</div>
+  </div>
+</div>
+
+<!-- STEP TABS -->
+<nav class="steps-nav">
+  <div class="steps-inner">
+    <button class="step-tab active" onclick="goStep(1)" id="tab-1">
+      <span class="step-num"><span>1</span></span> Identitas
+    </button>
+    <button class="step-tab" onclick="goStep(2)" id="tab-2">
+      <span class="step-num"><span>2</span></span> Gambaran Desa
+    </button>
+    <button class="step-tab" onclick="goStep(3)" id="tab-3">
+      <span class="step-num"><span>3</span></span> Sosial
+    </button>
+    <button class="step-tab" onclick="goStep(4)" id="tab-4">
+      <span class="step-num"><span>4</span></span> Ekonomi
+    </button>
+    <button class="step-tab" onclick="goStep(5)" id="tab-5">
+      <span class="step-num"><span>5</span></span> Spiritual
+    </button>
+    <button class="step-tab" onclick="goStep(6)" id="tab-6">
+      <span class="step-num"><span>6</span></span> Review
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN FORM -->
+<main class="main">
+
+  <!-- ════ STEP 1: IDENTITAS ════ -->
+  <div class="form-step active" id="step-1">
+
+    <div class="setup-card">
+      <h3>⚙️ Setup Google Sheets</h3>
+      <p>Tempel URL Google Apps Script Web App kamu di sini agar data dikirim langsung ke spreadsheet. Lakukan sekali saja, lalu simpan.</p>
+      <div class="input-row">
+        <input type="text" id="gsheet-url" placeholder="Masukkan URL Web App..." value="https://script.google.com/macros/s/AKfycbz4XmKsTuc1tbu4x6FCShIFvQjq9rJiyGXERsks5Feiub_LiYemSDVhayBRwHsRM8zH/exec" />
+        <button class="btn-save" onclick="saveSheetUrl()">Simpan</button>
+      </div>
+      <div class="setup-status" id="setup-status"></div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon green">🪪</div>
+        <div class="section-title-group">
+          <div class="section-title">Identitas Relawan & Tanggal</div>
+          <div class="section-desc">Informasi siapa yang mengisi dan kapan</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field required">
+            <label>Nama Relawan</label>
+            <input type="text" id="nama_relawan" placeholder="Nama lengkap" />
+          </div>
+          <div class="field required">
+            <label>Tanggal Kunjungan</label>
+            <input type="date" id="tanggal_kunjungan" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>No. HP / WhatsApp</label>
+            <input type="tel" id="hp_relawan" placeholder="08xx-xxxx-xxxx" />
+          </div>
+          <div class="field">
+            <label>Email Relawan</label>
+            <input type="email" id="email_relawan" placeholder="relawan@email.com" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Organisasi / Lembaga</label>
+          <input type="text" id="organisasi" placeholder="Nama lembaga / mandiri" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon teal">📍</div>
+        <div class="section-title-group">
+          <div class="section-title">Identitas Desa</div>
+          <div class="section-desc">Lokasi administratif desa yang didatangi</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field required">
+          <label>Nama Desa</label>
+          <select id="nama_desa">
+            <option value="">— Pilih desa —</option>
+            <option>Siberut Utara</option>
+            <option>Siberut Selatan</option>
+            <option>Siberut Barat</option>
+            <option>Siberut Barat Daya</option>
+            <option>Siberut Tengah</option>
+            <option>Siberut Timur</option>
+            <option>Sipora Utara</option>
+            <option>Sipora Selatan</option>
+            <option>Pagai Utara</option>
+            <option>Pagai Selatan</option>
+            <option>Desa lainnya (isi manual)</option>
+          </select>
+        </div>
+        <div class="field" id="desa-manual-wrap" style="display:none">
+          <label>Nama Desa (manual)</label>
+          <input type="text" id="nama_desa_manual" placeholder="Tulis nama desa" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Kecamatan</label>
+            <input type="text" id="kecamatan" placeholder="Nama kecamatan" />
+          </div>
+          <div class="field">
+            <label>Pulau</label>
+            <select id="pulau">
+              <option value="">— Pilih —</option>
+              <option>Siberut</option>
+              <option>Sipora</option>
+              <option>Pagai Utara</option>
+              <option>Pagai Selatan</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Koordinat GPS (Lat)</label>
+            <input type="text" id="lat" placeholder="-1.xxxx" />
+          </div>
+          <div class="field">
+            <label>Koordinat GPS (Lng)</label>
+            <input type="text" id="lng" placeholder="98.xxxx" />
+          </div>
+        </div>
+        <button class="btn-add" onclick="getGPS()" type="button">📡 Ambil Lokasi GPS Otomatis</button>
+        <div class="field">
+          <label>Nama Kepala Desa</label>
+          <input type="text" id="kepala_desa" placeholder="Nama kepala desa saat ini" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STEP 2: GAMBARAN DESA ════ -->
+  <div class="form-step" id="step-2">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon green">🗺️</div>
+        <div class="section-title-group">
+          <div class="section-title">Gambaran Umum Desa</div>
+          <div class="section-desc">Kondisi fisik, infrastruktur, dan karakteristik dasar desa</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field required">
+          <label>Deskripsi Umum Desa</label>
+          <div class="textarea-wrap">
+            <textarea id="deskripsi_umum" maxlength="1000" placeholder="Ceritakan kondisi desa secara keseluruhan — letak geografis, karakter masyarakat, hal yang pertama kali terlihat saat tiba..." rows="5"></textarea>
+            <span class="char-count" id="cc-deskripsi">0/1000</span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Jumlah Penduduk (approx.)</label>
+            <input type="number" id="jumlah_penduduk" placeholder="Angka estimasi" min="0" />
+          </div>
+          <div class="field">
+            <label>Jumlah KK</label>
+            <input type="number" id="jumlah_kk" placeholder="Kepala keluarga" min="0" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Akses ke Desa</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="akses-jalan" value="Jalan darat"><label for="akses-jalan"><span class="check-box"></span>Jalan darat</label></div>
+            <div class="opt-item"><input type="checkbox" id="akses-laut" value="Jalur laut"><label for="akses-laut"><span class="check-box"></span>Jalur laut</label></div>
+            <div class="opt-item"><input type="checkbox" id="akses-sungai" value="Sungai"><label for="akses-sungai"><span class="check-box"></span>Sungai</label></div>
+            <div class="opt-item"><input type="checkbox" id="akses-udara" value="Udara"><label for="akses-udara"><span class="check-box"></span>Udara</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Kondisi Infrastruktur</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="inf-listrik" value="Listrik PLN"><label for="inf-listrik"><span class="check-box"></span>Listrik PLN</label></div>
+            <div class="opt-item"><input type="checkbox" id="inf-genset" value="Genset"><label for="inf-genset"><span class="check-box"></span>Genset</label></div>
+            <div class="opt-item"><input type="checkbox" id="inf-airBersih" value="Air bersih"><label for="inf-airBersih"><span class="check-box"></span>Air bersih</label></div>
+            <div class="opt-item"><input type="checkbox" id="inf-internet" value="Internet"><label for="inf-internet"><span class="check-box"></span>Internet</label></div>
+            <div class="opt-item"><input type="checkbox" id="inf-sekolah" value="Sekolah"><label for="inf-sekolah"><span class="check-box"></span>Sekolah</label></div>
+            <div class="opt-item"><input type="checkbox" id="inf-puskesmas" value="Puskesmas"><label for="inf-puskesmas"><span class="check-box"></span>Puskesmas</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Kegiatan Utama Desa</label>
+          <div class="hint">Program atau kegiatan yang sedang/pernah berjalan di desa</div>
+          <div id="kegiatan-repeater">
+            <div class="repeater-item">
+              <div class="repeater-item-header">
+                <span class="repeater-item-label">Kegiatan 1</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <input type="text" placeholder="Nama kegiatan" class="keg-nama" />
+                <select class="keg-status">
+                  <option value="">Status kegiatan</option>
+                  <option>Aktif berjalan</option>
+                  <option>Sudah selesai</option>
+                  <option>Terhenti / vakum</option>
+                  <option>Direncanakan</option>
+                </select>
+                <textarea placeholder="Deskripsi singkat kegiatan..." rows="2" class="keg-desc" style="min-height:60px"></textarea>
+              </div>
+            </div>
+          </div>
+          <button class="btn-add" type="button" onclick="addKegiatan()">＋ Tambah Kegiatan</button>
+        </div>
+        <div class="field">
+          <label>Catatan Infrastruktur</label>
+          <textarea id="catatan_infrastruktur" placeholder="Kondisi jalan, bangunan, fasilitas umum yang perlu dicatat..." rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STEP 3: SOSIAL ════ -->
+  <div class="form-step" id="step-3">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon blue">👥</div>
+        <div class="section-title-group">
+          <div class="section-title">Kondisi Sosial Masyarakat</div>
+          <div class="section-desc">Hubungan sosial, pendidikan, dan dinamika komunitas</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field required">
+          <label>Tingkat Kerukunan Warga</label>
+          <div class="scale-field">
+            <div class="scale-labels"><span>Sangat Rendah</span><span>Sangat Tinggi</span></div>
+            <input type="range" id="kerukunan" min="1" max="10" value="5" oninput="updateScale('kerukunan','sv-kerukunan')" />
+            <div class="scale-value" id="sv-kerukunan">5</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="field">
+          <label>Dominasi Kelompok Usia</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="radio" name="usia_dominan" id="usia-anak" value="Anak-anak"><label for="usia-anak"><span class="check-box"></span>Anak-anak</label></div>
+            <div class="opt-item"><input type="radio" name="usia_dominan" id="usia-remaja" value="Remaja"><label for="usia-remaja"><span class="check-box"></span>Remaja</label></div>
+            <div class="opt-item"><input type="radio" name="usia_dominan" id="usia-dewasa" value="Dewasa"><label for="usia-dewasa"><span class="check-box"></span>Dewasa</label></div>
+            <div class="opt-item"><input type="radio" name="usia_dominan" id="usia-lansia" value="Lansia"><label for="usia-lansia"><span class="check-box"></span>Lansia</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tingkat Pendidikan Mayoritas</label>
+          <select id="pendidikan_mayoritas">
+            <option value="">— Pilih —</option>
+            <option>Tidak sekolah</option>
+            <option>SD / sederajat</option>
+            <option>SMP / sederajat</option>
+            <option>SMA / sederajat</option>
+            <option>Perguruan Tinggi</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Isu Sosial yang Ditemukan</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="isu-konflik" value="Konflik antar warga"><label for="isu-konflik"><span class="check-box"></span>Konflik warga</label></div>
+            <div class="opt-item"><input type="checkbox" id="isu-migrasi" value="Migrasi tinggi"><label for="isu-migrasi"><span class="check-box"></span>Migrasi tinggi</label></div>
+            <div class="opt-item"><input type="checkbox" id="isu-putus-sekolah" value="Putus sekolah"><label for="isu-putus-sekolah"><span class="check-box"></span>Putus sekolah</label></div>
+            <div class="opt-item"><input type="checkbox" id="isu-narkoba" value="Narkoba/miras"><label for="isu-narkoba"><span class="check-box"></span>Narkoba/miras</label></div>
+            <div class="opt-item"><input type="checkbox" id="isu-kdrt" value="KDRT"><label for="isu-kdrt"><span class="check-box"></span>KDRT</label></div>
+            <div class="opt-item"><input type="checkbox" id="isu-stunting" value="Stunting/gizi buruk"><label for="isu-stunting"><span class="check-box"></span>Stunting</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Peran Perempuan di Desa</label>
+          <select id="peran_perempuan">
+            <option value="">— Pilih —</option>
+            <option>Sangat aktif dalam pengambilan keputusan</option>
+            <option>Cukup aktif di komunitas</option>
+            <option>Terbatas pada peran domestik</option>
+            <option>Hampir tidak ada keterlibatan publik</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Catatan Kondisi Sosial</label>
+          <div class="textarea-wrap">
+            <textarea id="catatan_sosial" maxlength="800" placeholder="Dinamika hubungan antar warga, tradisi adat yang masih berjalan, potensi konflik atau keharmonisan yang perlu dicatat..." rows="4"></textarea>
+            <span class="char-count" id="cc-sosial">0/800</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STEP 4: EKONOMI ════ -->
+  <div class="form-step" id="step-4">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon amber">💼</div>
+        <div class="section-title-group">
+          <div class="section-title">Kondisi & Perkembangan Ekonomi</div>
+          <div class="section-desc">Mata pencaharian, pendapatan, dan potensi ekonomi desa</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label>Mata Pencaharian Utama</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="mp-nelayan" value="Nelayan"><label for="mp-nelayan"><span class="check-box"></span>Nelayan</label></div>
+            <div class="opt-item"><input type="checkbox" id="mp-tani" value="Petani"><label for="mp-tani"><span class="check-box"></span>Petani</label></div>
+            <div class="opt-item"><input type="checkbox" id="mp-berkebun" value="Berkebun"><label for="mp-berkebun"><span class="check-box"></span>Berkebun</label></div>
+            <div class="opt-item"><input type="checkbox" id="mp-buruh" value="Buruh"><label for="mp-buruh"><span class="check-box"></span>Buruh</label></div>
+            <div class="opt-item"><input type="checkbox" id="mp-dagang" value="Pedagang"><label for="mp-dagang"><span class="check-box"></span>Pedagang</label></div>
+            <div class="opt-item"><input type="checkbox" id="mp-pns" value="PNS/TNI/Polri"><label for="mp-pns"><span class="check-box"></span>PNS/TNI/Polri</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Estimasi Pendapatan Rata-rata/Bulan</label>
+          <select id="pendapatan_rata">
+            <option value="">— Pilih rentang —</option>
+            <option>Di bawah Rp 500.000</option>
+            <option>Rp 500.000 – Rp 1.000.000</option>
+            <option>Rp 1.000.000 – Rp 2.000.000</option>
+            <option>Rp 2.000.000 – Rp 3.500.000</option>
+            <option>Di atas Rp 3.500.000</option>
+            <option>Tidak dapat diestimasi</option>
+          </select>
+        </div>
+        <div class="field required">
+          <label>Tingkat Kesejahteraan Ekonomi</label>
+          <div class="scale-field">
+            <div class="scale-labels"><span>Sangat Buruk</span><span>Sangat Baik</span></div>
+            <input type="range" id="kesejahteraan" min="1" max="10" value="5" oninput="updateScale('kesejahteraan','sv-kesejahteraan')" />
+            <div class="scale-value" id="sv-kesejahteraan">5</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="field">
+          <label>Potensi Ekonomi Lokal</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="pot-wisata" value="Wisata alam"><label for="pot-wisata"><span class="check-box"></span>Wisata alam</label></div>
+            <div class="opt-item"><input type="checkbox" id="pot-hasil-laut" value="Hasil laut"><label for="pot-hasil-laut"><span class="check-box"></span>Hasil laut</label></div>
+            <div class="opt-item"><input type="checkbox" id="pot-pertanian" value="Pertanian"><label for="pot-pertanian"><span class="check-box"></span>Pertanian</label></div>
+            <div class="opt-item"><input type="checkbox" id="pot-kerajinan" value="Kerajinan tangan"><label for="pot-kerajinan"><span class="check-box"></span>Kerajinan</label></div>
+            <div class="opt-item"><input type="checkbox" id="pot-hutan" value="Hasil hutan"><label for="pot-hutan"><span class="check-box"></span>Hasil hutan</label></div>
+            <div class="opt-item"><input type="checkbox" id="pot-umkm" value="UMKM"><label for="pot-umkm"><span class="check-box"></span>UMKM</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Perkembangan Ekonomi (Tren)</label>
+          <div class="options-grid cols-3">
+            <div class="opt-item"><input type="radio" name="tren_ekonomi" id="tren-naik" value="Membaik"><label for="tren-naik"><span class="check-box"></span>📈 Membaik</label></div>
+            <div class="opt-item"><input type="radio" name="tren_ekonomi" id="tren-stabil" value="Stabil"><label for="tren-stabil"><span class="check-box"></span>➡️ Stabil</label></div>
+            <div class="opt-item"><input type="radio" name="tren_ekonomi" id="tren-turun" value="Menurun"><label for="tren-turun"><span class="check-box"></span>📉 Menurun</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Akses terhadap Layanan Keuangan</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="keu-bank" value="Bank"><label for="keu-bank"><span class="check-box"></span>Bank</label></div>
+            <div class="opt-item"><input type="checkbox" id="keu-koperasi" value="Koperasi"><label for="keu-koperasi"><span class="check-box"></span>Koperasi</label></div>
+            <div class="opt-item"><input type="checkbox" id="keu-bri-link" value="BRILink/Agen"><label for="keu-bri-link"><span class="check-box"></span>BRILink/Agen</label></div>
+            <div class="opt-item"><input type="checkbox" id="keu-tidak-ada" value="Tidak ada"><label for="keu-tidak-ada"><span class="check-box"></span>Tidak ada</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Catatan Kondisi Ekonomi</label>
+          <div class="textarea-wrap">
+            <textarea id="catatan_ekonomi" maxlength="800" placeholder="Hambatan ekonomi yang dihadapi, komoditas unggulan, peluang yang belum dimanfaatkan, bantuan pemerintah yang diterima..." rows="4"></textarea>
+            <span class="char-count" id="cc-ekonomi">0/800</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STEP 5: SPIRITUAL ════ -->
+  <div class="form-step" id="step-5">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon purple">🕌</div>
+        <div class="section-title-group">
+          <div class="section-title">Kondisi Religi & Spiritual</div>
+          <div class="section-desc">Kehidupan keagamaan, kepercayaan lokal, dan kegiatan rohani</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label>Agama Mayoritas Penduduk</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="radio" name="agama_mayoritas" id="ag-islam" value="Islam"><label for="ag-islam"><span class="check-box"></span>Islam</label></div>
+            <div class="opt-item"><input type="radio" name="agama_mayoritas" id="ag-kristen" value="Kristen Protestan"><label for="ag-kristen"><span class="check-box"></span>Kristen Protestan</label></div>
+            <div class="opt-item"><input type="radio" name="agama_mayoritas" id="ag-katolik" value="Katolik"><label for="ag-katolik"><span class="check-box"></span>Katolik</label></div>
+            <div class="opt-item"><input type="radio" name="agama_mayoritas" id="ag-campuran" value="Campuran"><label for="ag-campuran"><span class="check-box"></span>Campuran</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Kepercayaan Lokal / Adat</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="radio" name="kepercayaan_adat" id="adat-kuat" value="Masih kuat"><label for="adat-kuat"><span class="check-box"></span>Masih kuat</label></div>
+            <div class="opt-item"><input type="radio" name="kepercayaan_adat" id="adat-sebagian" value="Sebagian masih ada"><label for="adat-sebagian"><span class="check-box"></span>Sebagian ada</label></div>
+            <div class="opt-item"><input type="radio" name="kepercayaan_adat" id="adat-lemah" value="Sudah melemah"><label for="adat-lemah"><span class="check-box"></span>Sudah melemah</label></div>
+            <div class="opt-item"><input type="radio" name="kepercayaan_adat" id="adat-tidak-ada" value="Tidak ada"><label for="adat-tidak-ada"><span class="check-box"></span>Tidak ada</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Fasilitas Ibadah yang Ada</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="fib-masjid" value="Masjid"><label for="fib-masjid"><span class="check-box"></span>Masjid</label></div>
+            <div class="opt-item"><input type="checkbox" id="fib-mushola" value="Mushola"><label for="fib-mushola"><span class="check-box"></span>Mushola</label></div>
+            <div class="opt-item"><input type="checkbox" id="fib-gereja" value="Gereja"><label for="fib-gereja"><span class="check-box"></span>Gereja</label></div>
+            <div class="opt-item"><input type="checkbox" id="fib-uma" value="Uma (rumah adat)"><label for="fib-uma"><span class="check-box"></span>Uma (rumah adat)</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tingkat Keaktifan Kegiatan Keagamaan</label>
+          <div class="scale-field">
+            <div class="scale-labels"><span>Tidak Aktif</span><span>Sangat Aktif</span></div>
+            <input type="range" id="keaktifan_religi" min="1" max="10" value="5" oninput="updateScale('keaktifan_religi','sv-religi')" />
+            <div class="scale-value" id="sv-religi">5</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Kegiatan Keagamaan yang Berjalan</label>
+          <div class="options-grid">
+            <div class="opt-item"><input type="checkbox" id="keg-pengajian" value="Pengajian rutin"><label for="keg-pengajian"><span class="check-box"></span>Pengajian</label></div>
+            <div class="opt-item"><input type="checkbox" id="keg-ibadah-mingguan" value="Ibadah mingguan"><label for="keg-ibadah-mingguan"><span class="check-box"></span>Ibadah mingguan</label></div>
+            <div class="opt-item"><input type="checkbox" id="keg-mdta" value="Madrasah/MDTA"><label for="keg-mdta"><span class="check-box"></span>Madrasah/MDTA</label></div>
+            <div class="opt-item"><input type="checkbox" id="keg-upacara-adat" value="Upacara adat"><label for="keg-upacara-adat"><span class="check-box"></span>Upacara adat</label></div>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Catatan sensitif:</strong> Informasi terkait kepercayaan lokal dan adat Mentawai bersifat sensitif. Dokumentasikan dengan hormat dan tidak menghakimi.
+        </div>
+        <div class="field">
+          <label>Catatan Kondisi Spiritual</label>
+          <div class="textarea-wrap">
+            <textarea id="catatan_spiritual" maxlength="800" placeholder="Dinamika kehidupan keagamaan, tokoh agama yang berpengaruh, ketegangan atau keharmonisan antar umat, tradisi spiritual yang unik..." rows="4"></textarea>
+            <span class="char-count" id="cc-spiritual">0/800</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon red">📷</div>
+        <div class="section-title-group">
+          <div class="section-title">Dokumentasi Foto</div>
+          <div class="section-desc">Upload foto kondisi desa (maks. 5 foto)</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="photo-upload" id="photo-drop">
+          <input type="file" id="foto_desa" accept="image/*" multiple onchange="previewPhotos(event)" />
+          <div class="photo-upload-icon">📸</div>
+          <p>Ketuk untuk ambil/pilih foto</p>
+          <small>JPG, PNG · Maks. 5 foto · 10MB/foto</small>
+        </div>
+        <div class="photo-preview" id="photo-preview"></div>
+        <div class="field">
+          <label>Keterangan Foto</label>
+          <textarea id="keterangan_foto" placeholder="Jelaskan singkat apa yang ada di foto-foto di atas..." rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STEP 6: REVIEW ════ -->
+  <div class="form-step" id="step-6">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-icon green">✅</div>
+        <div class="section-title-group">
+          <div class="section-title">Review & Kirim Data</div>
+          <div class="section-desc">Periksa kembali sebelum mengirim ke Google Sheets</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div id="review-content" style="font-size:13.5px;line-height:1.8;color:var(--mid);">
+          <!-- JS akan isi ini -->
+        </div>
+        <div class="divider"></div>
+        <div class="field">
+          <label>Catatan Tambahan Relawan</label>
+          <textarea id="catatan_tambahan" placeholder="Hal-hal penting yang belum tertangkap di form di atas..." rows="3"></textarea>
+        </div>
+        <div class="info-box">
+          <strong>Siap kirim?</strong> Data akan dikirim ke Google Sheets yang sudah dikonfigurasi. Pastikan koneksi internet tersedia, atau data akan tersimpan lokal terlebih dahulu.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div id="success-screen">
+    <div class="success-icon">✅</div>
+    <h2>Data Berhasil Dikirim!</h2>
+    <p>Terima kasih sudah mengisi data lapangan untuk desa <strong id="success-desa"></strong>. Data sudah masuk ke Google Sheets.</p>
+    <button class="btn-reset" onclick="resetForm()">+ Isi Data Desa Baru</button>
+  </div>
+
+</main>
+
+<!-- NAVIGATION BUTTONS -->
+<div class="form-nav" id="form-nav">
+  <button class="btn btn-prev" id="btn-prev" onclick="prevStep()" style="display:none">← Kembali</button>
+  <button class="btn btn-next" id="btn-next" onclick="nextStep()">Lanjut →</button>
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 6;
+
+// ── INIT ──────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('tanggal_kunjungan').valueAsDate = new Date();
+  updateProgress();
+
+  // Load saved sheet URL
+  const saved = localStorage.getItem('gsheet_url');
+  if (saved) {
+    document.getElementById('gsheet-url').value = saved;
+    document.getElementById('setup-status').textContent = '✓ URL tersimpan';
+    document.getElementById('setup-status').className = 'setup-status ok';
+  }
+
+  // Char counters
+  setupCharCount('deskripsi_umum', 'cc-deskripsi', 1000);
+  setupCharCount('catatan_sosial', 'cc-sosial', 800);
+  setupCharCount('catatan_ekonomi', 'cc-ekonomi', 800);
+  setupCharCount('catatan_spiritual', 'cc-spiritual', 800);
+
+  // Desa manual toggle
+  document.getElementById('nama_desa').addEventListener('change', function() {
+    const wrap = document.getElementById('desa-manual-wrap');
+    wrap.style.display = this.value === 'Desa lainnya (isi manual)' ? 'flex' : 'none';
+  });
+});
+
+function setupCharCount(textareaId, counterId, max) {
+  const ta = document.getElementById(textareaId);
+  const cc = document.getElementById(counterId);
+  if (!ta || !cc) return;
+  ta.addEventListener('input', () => {
+    cc.textContent = ta.value.length + '/' + max;
+    cc.style.color = ta.value.length > max * 0.9 ? 'var(--terracotta)' : 'var(--light)';
+  });
+}
+
+// ── PROGRESS ──────────────────────────────────
+function updateProgress() {
+  const pct = ((currentStep - 1) / (totalSteps - 1)) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `Langkah ${currentStep}/${totalSteps}`;
+}
+
+// ── STEP NAVIGATION ───────────────────────────
+function goStep(n) {
+  if (n < 1 || n > totalSteps) return;
+
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.querySelector('#tab-' + currentStep).classList.remove('active');
+  if (n > currentStep) document.querySelector('#tab-' + currentStep).classList.add('done');
+
+  currentStep = n;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  document.querySelector('#tab-' + currentStep).classList.add('active');
+
+  document.getElementById('btn-prev').style.display = currentStep === 1 ? 'none' : 'flex';
+  const btnNext = document.getElementById('btn-next');
+  if (currentStep === totalSteps) {
+    btnNext.textContent = '🚀 Kirim Data';
+    btnNext.className = 'btn btn-submit';
+    btnNext.onclick = submitForm;
+    buildReview();
+  } else {
+    btnNext.textContent = 'Lanjut →';
+    btnNext.className = 'btn btn-next';
+    btnNext.onclick = nextStep;
+  }
+
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Scroll tab into view
+  document.querySelector('#tab-' + currentStep).scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+function nextStep() { goStep(currentStep + 1); }
+function prevStep() { goStep(currentStep - 1); }
+
+// ── SCALE ──────────────────────────────────────
+function updateScale(inputId, displayId) {
+  document.getElementById(displayId).textContent = document.getElementById(inputId).value;
+}
+
+// ── GPS ────────────────────────────────────────
+function getGPS() {
+  if (!navigator.geolocation) { alert('GPS tidak tersedia di perangkat ini.'); return; }
+  navigator.geolocation.getCurrentPosition(pos => {
+    document.getElementById('lat').value = pos.coords.latitude.toFixed(6);
+    document.getElementById('lng').value = pos.coords.longitude.toFixed(6);
+  }, () => alert('Gagal mengambil lokasi. Pastikan izin lokasi diaktifkan.'));
+}
+
+// ── KEGIATAN REPEATER ─────────────────────────
+let kegiatanCount = 1;
+function addKegiatan() {
+  kegiatanCount++;
+  const div = document.createElement('div');
+  div.className = 'repeater-item';
+  div.innerHTML = `
+    <div class="repeater-item-header">
+      <span class="repeater-item-label">Kegiatan ${kegiatanCount}</span>
+      <button class="btn-remove" type="button" onclick="this.closest('.repeater-item').remove()">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <input type="text" placeholder="Nama kegiatan" class="keg-nama" />
+      <select class="keg-status">
+        <option value="">Status kegiatan</option>
+        <option>Aktif berjalan</option>
+        <option>Sudah selesai</option>
+        <option>Terhenti / vakum</option>
+        <option>Direncanakan</option>
+      </select>
+      <textarea placeholder="Deskripsi singkat kegiatan..." rows="2" class="keg-desc" style="min-height:60px"></textarea>
+    </div>`;
+  document.getElementById('kegiatan-repeater').appendChild(div);
+}
+
+// ── PHOTO PREVIEW ─────────────────────────────
+function previewPhotos(e) {
+  const preview = document.getElementById('photo-preview');
+  preview.innerHTML = '';
+  const files = Array.from(e.target.files).slice(0, 5);
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const img = document.createElement('img');
+      img.src = ev.target.result;
+      img.className = 'photo-thumb';
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+// ── GOOGLE SHEETS ─────────────────────────────
+function saveSheetUrl() {
+  const url = document.getElementById('gsheet-url').value.trim();
+  const status = document.getElementById('setup-status');
+  if (!url.startsWith('https://script.google.com')) {
+    status.textContent = '✗ URL tidak valid. Harus berupa URL Google Apps Script.';
+    status.className = 'setup-status err';
+    return;
+  }
+  localStorage.setItem('gsheet_url', url);
+  status.textContent = '✓ URL tersimpan! Form siap mengirim data.';
+  status.className = 'setup-status ok';
+}
+
+// ── BUILD REVIEW ──────────────────────────────
+function buildReview() {
+  const desa = document.getElementById('nama_desa').value || document.getElementById('nama_desa_manual').value || '—';
+  const relawan = document.getElementById('nama_relawan').value || '—';
+  const tanggal = document.getElementById('tanggal_kunjungan').value || '—';
+  const penduduk = document.getElementById('jumlah_penduduk').value || '—';
+  const kesejahteraan = document.getElementById('kesejahteraan').value;
+  const kerukunan = document.getElementById('kerukunan').value;
+
+  document.getElementById('review-content').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      ${rv('🪪 Relawan', relawan)}
+      ${rv('📅 Tanggal', tanggal)}
+      ${rv('📍 Desa', desa)}
+      ${rv('👥 Jumlah Penduduk', penduduk)}
+      ${rv('📊 Kesejahteraan', kesejahteraan + '/10')}
+      ${rv('🤝 Kerukunan', kerukunan + '/10')}
+    </div>
+    <div style="margin-top:12px;padding:12px;background:var(--mist);border-radius:6px;font-size:12.5px;color:var(--mid)">
+      ✅ Semua data dari 5 seksi akan dikirim ke Google Sheets.
+    </div>`;
+}
+
+function rv(label, val) {
+  return `<div style="background:var(--mist);padding:10px 12px;border-radius:6px">
+    <div style="font-size:11px;color:var(--light);margin-bottom:2px">${label}</div>
+    <div style="font-size:13.5px;font-weight:600;color:var(--ink)">${val}</div>
+  </div>`;
+}
+
+// ── COLLECT DATA ──────────────────────────────
+function collectData() {
+  const checkboxVals = (name) => {
+    return Array.from(document.querySelectorAll(`input[type="checkbox"][id^="${name}"]:checked`))
+                .map(cb => cb.value).join(', ');
+  };
+  const radioVal = (name) => {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  };
+  const kegiatanList = Array.from(document.querySelectorAll('.repeater-item')).map(item => {
+    const nama = item.querySelector('.keg-nama')?.value || '';
+    const status = item.querySelector('.keg-status')?.value || '';
+    return `${nama} (${status})`;
+  }).filter(k => k.trim() !== ' ()').join(' | ');
+
+  return {
+    timestamp: new Date().toISOString(),
+    nama_relawan: document.getElementById('nama_relawan').value,
+    tanggal_kunjungan: document.getElementById('tanggal_kunjungan').value,
+    hp_relawan: document.getElementById('hp_relawan').value,
+    email_relawan: document.getElementById('email_relawan').value,
+    organisasi: document.getElementById('organisasi').value,
+    nama_desa: document.getElementById('nama_desa').value === 'Desa lainnya (isi manual)'
+                ? document.getElementById('nama_desa_manual').value
+                : document.getElementById('nama_desa').value,
+    kecamatan: document.getElementById('kecamatan').value,
+    pulau: document.getElementById('pulau').value,
+    koordinat_lat: document.getElementById('lat').value,
+    koordinat_lng: document.getElementById('lng').value,
+    kepala_desa: document.getElementById('kepala_desa').value,
+    deskripsi_umum: document.getElementById('deskripsi_umum').value,
+    jumlah_penduduk: document.getElementById('jumlah_penduduk').value,
+    jumlah_kk: document.getElementById('jumlah_kk').value,
+    akses_desa: checkboxVals('akses'),
+    infrastruktur: checkboxVals('inf'),
+    kegiatan_desa: kegiatanList,
+    catatan_infrastruktur: document.getElementById('catatan_infrastruktur').value,
+    tingkat_kerukunan: document.getElementById('kerukunan').value,
+    usia_dominan: radioVal('usia_dominan'),
+    pendidikan_mayoritas: document.getElementById('pendidikan_mayoritas').value,
+    isu_sosial: checkboxVals('isu'),
+    peran_perempuan: document.getElementById('peran_perempuan').value,
+    catatan_sosial: document.getElementById('catatan_sosial').value,
+    mata_pencaharian: checkboxVals('mp'),
+    pendapatan_rata: document.getElementById('pendapatan_rata').value,
+    tingkat_kesejahteraan: document.getElementById('kesejahteraan').value,
+    potensi_ekonomi: checkboxVals('pot'),
+    tren_ekonomi: radioVal('tren_ekonomi'),
+    akses_keuangan: checkboxVals('keu'),
+    catatan_ekonomi: document.getElementById('catatan_ekonomi').value,
+    agama_mayoritas: radioVal('agama_mayoritas'),
+    kepercayaan_adat: radioVal('kepercayaan_adat'),
+    fasilitas_ibadah: checkboxVals('fib'),
+    keaktifan_religi: document.getElementById('keaktifan_religi').value,
+    kegiatan_keagamaan: checkboxVals('keg'),
+    catatan_spiritual: document.getElementById('catatan_spiritual').value,
+    keterangan_foto: document.getElementById('keterangan_foto').value,
+    catatan_tambahan: document.getElementById('catatan_tambahan').value,
+  };
+}
+
+// ── SUBMIT ────────────────────────────────────
+async function submitForm() {
+  const btn = document.getElementById('btn-next');
+  const sheetUrl = localStorage.getItem('gsheet_url');
+  const data = collectData();
+
+  if (!data.nama_relawan || !data.nama_desa) {
+    alert('Nama relawan dan nama desa wajib diisi. Kembali ke Langkah 1.');
+    goStep(1); return;
+  }
+
+  btn.textContent = '⏳ Mengirim...';
+  btn.disabled = true;
+
+  if (sheetUrl) {
+    try {
+      await fetch(sheetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (e) {
+      // no-cors tidak throw error kecuali network fail
+    }
+  }
+
+  // Simpan lokal sebagai backup
+  const existing = JSON.parse(localStorage.getItem('mentawai_data') || '[]');
+  existing.push(data);
+  localStorage.setItem('mentawai_data', JSON.stringify(existing));
+
+  // Show success
+  document.getElementById('form-nav').style.display = 'none';
+  document.getElementById('step-6').style.display = 'none';
+  document.getElementById('success-screen').classList.add('visible');
+  document.getElementById('success-desa').textContent = data.nama_desa;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── RESET ─────────────────────────────────────
+function resetForm() {
+  document.querySelectorAll('input[type="text"], input[type="number"], input[type="email"], input[type="tel"], textarea, select').forEach(el => { el.value = ''; });
+  document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => { el.checked = false; });
+  document.getElementById('tanggal_kunjungan').valueAsDate = new Date();
+  document.getElementById('kerukunan').value = 5;
+  document.getElementById('kesejahteraan').value = 5;
+  document.getElementById('keaktifan_religi').value = 5;
+  document.getElementById('sv-kerukunan').textContent = '5';
+  document.getElementById('sv-kesejahteraan').textContent = '5';
+  document.getElementById('sv-religi').textContent = '5';
+  document.getElementById('photo-preview').innerHTML = '';
+  document.getElementById('success-screen').classList.remove('visible');
+  document.getElementById('form-nav').style.display = 'flex';
+  document.getElementById('step-6').style.display = '';
+
+  // Reset tabs
+  document.querySelectorAll('.step-tab').forEach(t => t.classList.remove('active', 'done'));
+  currentStep = 1;
+  goStep(1);
+}
+</script>
+</body>
+</html>

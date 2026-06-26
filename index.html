@@ -1518,7 +1518,10 @@ function collectData() {
 // ── SUBMIT ────────────────────────────────────
 async function submitForm() {
   const btn = document.getElementById('btn-next');
-  const sheetUrl = localStorage.getItem('gsheet_url');
+  let sheetUrl = localStorage.getItem('gsheet_url');
+if (!sheetUrl) {
+    sheetUrl = document.getElementById('gsheet-url').value;
+}
   const data = collectData();
 
   if (!data.nama_relawan || !data.nama_desa) {

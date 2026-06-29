@@ -1299,12 +1299,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCharCount('catatan_ekonomi', 'cc-ekonomi', 800);
   setupCharCount('catatan_spiritual', 'cc-spiritual', 800);
 
-  // Desa manual toggle
-  document.getElementById('nama_desa').addEventListener('change', function() {
-    const wrap = document.getElementById('desa-manual-wrap');
-    wrap.style.display = this.value === 'Desa lainnya (isi manual)' ? 'flex' : 'none';
-  });
-});
 
 function setupCharCount(textareaId, counterId, max) {
   const ta = document.getElementById(textareaId);

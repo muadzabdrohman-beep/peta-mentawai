@@ -850,41 +850,46 @@ input[type="range"]::-webkit-slider-thumb {
       <div class="section-body">
         <div class="field required">
           <label>Nama Desa / Dusun</label>
-          <select id="nama_desa">
-            <option value="">— Pilih desa / dusun —</option>
-            <option>Saibi Samukop</option>
-            <option>Malagure</option>
-            <option>Ugai</option>
-            <option>Sarausau</option>
-            <option>Madobak</option>
-            <option>Matotonan</option>
-            <option>Siri Surak</option>
-            <option>Sibudda Oinan</option>
-            <option>Tinambu</option>
-            <option>Saliguma</option>
-            <option>Simoilaklak</option>
-            <option>Sigulukguluk</option>
-            <option>Gotab</option>
-            <option>Desa / Dusun lainnya (isi manual)</option>
+          <select id="nama_desa_dusun" name="Nama_Desa_Dusun" required>
+            <option value="">— Pilih Desa / Dusun —</option>
+            <option value="Saibi Samukop">Saibi Samukop</option>
+            <option value="Malagure">Malagure</option>
+            <option value="Ugai">Ugai</option>
+            <option value="Sarausau">Sarausau</option>
+            <option value="Madobak">Madobak</option>
+            <option value="Matotonan">Matotonan</option>
+            <option value="Siri Surak">Siri Surak</option>
+            <option value="Sibudda Oinan">Sibudda Oinan</option>
+            <option value="Tinambu">Tinambu</option>
+            <option value="Saliguma">Saliguma</option>
+            <option value="Simoilaklak">Simoilaklak</option>
+            <option value="Sigulukguluk">Sigulukguluk</option>
+            <option value="Gotab">Gotab</option>
+            <option value="Lainnya">Desa / Dusun lainnya (isi manual)</option>
           </select>
         </div>
-        <div class="field" id="desa-manual-wrap" style="display:none">
-          <label>Nama Desa (manual)</label>
-          <input type="text" id="nama_desa_manual" placeholder="Tulis nama desa" />
+        <div class="field" id="desa_dusun-manual-wrap" style="display:none">
+          <label>Nama Desa / Dusun (manual)</label>
+          <input type="text" id="nama_desa_dusun_manual" placeholder="Tulis nama desa / dusun" />
         </div>
         <div class="field-row">
           <div class="field">
-            <label>Kecamatan</label>
-            <input type="text" id="kecamatan" placeholder="Nama kecamatan" />
-          </div>
+  <label>Kecamatan</label>
+  <select id="Kecamatan" name="Kecamatan" required>
+    <option value="">-- Pilih Kecamatan --</option>
+    <option value="Siberut Tengah">Siberut Tengah</option>
+    <option value="Siberut Selatan">Siberut Selatan</option>
+    <option value="Siberut Barat Daya">Siberut Barat Daya</option>
+  </select>
+</div>
           <div class="field">
             <label>Pulau</label>
-            <select id="pulau">
-              <option value="">— Pilih —</option>
-              <option>Siberut</option>
-              <option>Sipora</option>
-              <option>Pagai Utara</option>
-              <option>Pagai Selatan</option>
+            <select id="Pulau" name="Pulau" required onchange>
+              <option value="">— Pilih Pulau —</option>
+              <option value="Siberut">Siberut</option>
+              <option value="Sipora">Sipora</option>
+              <option value="Pagai Utara">Pagai Utara</option>
+              <option value="Pagai Selatan">Pagai Selatan</option>
             </select>
           </div>
         </div>

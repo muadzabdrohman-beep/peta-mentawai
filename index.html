@@ -825,7 +825,7 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="field-row">
           <div class="field">
             <label>No. HP / WhatsApp</label>
-            <input type="tel" id="hp_relawan" placeholder="08xx-xxxx-xxxx" />
+            <input type="tel" id="hp_relawan" name="No_HP" placeholder="08xx-xxxx-xxxx" required />
           </div>
           <div class="field">
             <label>Email Relawan</label>
@@ -884,7 +884,7 @@ input[type="range"]::-webkit-slider-thumb {
 </div>
           <div class="field">
             <label>Pulau</label>
-            <select id="Pulau" name="Pulau" required onchange>
+            <select id="Pulau" name="Pulau" required>
               <option value="">— Pilih Pulau —</option>
               <option value="Siberut">Siberut</option>
               <option value="Sipora">Sipora</option>
@@ -926,18 +926,18 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="field required">
           <label>Deskripsi Umum Desa</label>
           <div class="textarea-wrap">
-            <textarea id="deskripsi_umum" maxlength="1000" placeholder="Ceritakan kondisi desa secara keseluruhan — letak geografis, karakter masyarakat, hal yang pertama kali terlihat saat tiba..." rows="5"></textarea>
+            <textarea id="deskripsi_umum" name="Deskripsi Umum" maxlength="1000" placeholder="Ceritakan kondisi desa secara keseluruhan — letak geografis, karakter masyarakat, hal yang pertama kali terlihat saat tiba..." rows="5" required></textarea>
             <span class="char-count" id="cc-deskripsi">0/1000</span>
           </div>
         </div>
         <div class="field-row">
           <div class="field">
             <label>Jumlah Penduduk (approx.)</label>
-            <input type="number" id="jumlah_penduduk" placeholder="Angka estimasi" min="0" />
+            <input type="number" id="jumlah_penduduk" name="Jumlah_Penduduk" placeholder="Angka estimasi" min="0" required />
           </div>
           <div class="field">
             <label>Jumlah KK</label>
-            <input type="number" id="jumlah_kk" placeholder="Kepala keluarga" min="0" />
+            <input type="number" id="jumlah_kk" name="Jumlah_KK" placeholder="Kepala keluarga" min="0" required />
           </div>
         </div>
         <div class="field">
@@ -969,7 +969,7 @@ input[type="range"]::-webkit-slider-thumb {
                 <span class="repeater-item-label">Kegiatan 1</span>
               </div>
               <div style="display:flex;flex-direction:column;gap:10px">
-                <input type="text" placeholder="Nama kegiatan" class="keg-nama" />
+                <input type="text" name="Kegiatan_Utama" placeholder="Nama kegiatan" class="keg-nama" required />
                 <select class="keg-status">
                   <option value="">Status kegiatan</option>
                   <option>Aktif berjalan</option>
@@ -985,7 +985,7 @@ input[type="range"]::-webkit-slider-thumb {
         </div>
         <div class="field">
           <label>Catatan Infrastruktur</label>
-          <textarea id="catatan_infrastruktur" placeholder="Kondisi jalan, bangunan, fasilitas umum yang perlu dicatat..." rows="3"></textarea>
+          <textarea id="catatan_infrastruktur" name="Catatan_Infrastruktur" placeholder="Kondisi jalan, bangunan, fasilitas umum yang perlu dicatat..." rows="3" required></textarea>
         </div>
       </div>
     </div>
@@ -1006,7 +1006,7 @@ input[type="range"]::-webkit-slider-thumb {
           <label>Tingkat Kerukunan Warga</label>
           <div class="scale-field">
             <div class="scale-labels"><span>Sangat Rendah</span><span>Sangat Tinggi</span></div>
-            <input type="range" id="kerukunan" min="1" max="10" value="5" oninput="updateScale('kerukunan','sv-kerukunan')" />
+            <input type="range" id="kerukunan" name="Tingkat Kerukunan" min="1" max="10" value="5" oninput="updateScale('kerukunan','sv-kerukunan')" required />
             <div class="scale-value" id="sv-kerukunan">5</div>
           </div>
         </div>
@@ -1055,7 +1055,7 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="field">
           <label>Catatan Kondisi Sosial</label>
           <div class="textarea-wrap">
-            <textarea id="catatan_sosial" maxlength="800" placeholder="Dinamika hubungan antar warga, tradisi adat yang masih berjalan, potensi konflik atau keharmonisan yang perlu dicatat..." rows="4"></textarea>
+            <textarea id="catatan_sosial" maxlength="800" name="Catatan_Kondisi_Sosial" placeholder="Dinamika hubungan antar warga, tradisi adat yang masih berjalan, potensi konflik atau keharmonisan yang perlu dicatat..." rows="4" required></textarea>
             <span class="char-count" id="cc-sosial">0/800</span>
           </div>
         </div>
@@ -1101,7 +1101,7 @@ input[type="range"]::-webkit-slider-thumb {
           <label>Tingkat Kesejahteraan Ekonomi</label>
           <div class="scale-field">
             <div class="scale-labels"><span>Sangat Buruk</span><span>Sangat Baik</span></div>
-            <input type="range" id="kesejahteraan" min="1" max="10" value="5" oninput="updateScale('kesejahteraan','sv-kesejahteraan')" />
+            <input type="range" id="kesejahteraan" name="Tingkat_Kesejahteraan" min="1" max="10" value="5" oninput="updateScale('kesejahteraan','sv-kesejahteraan')" />
             <div class="scale-value" id="sv-kesejahteraan">5</div>
           </div>
         </div>
@@ -1137,7 +1137,7 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="field">
           <label>Catatan Kondisi Ekonomi</label>
           <div class="textarea-wrap">
-            <textarea id="catatan_ekonomi" maxlength="800" placeholder="Hambatan ekonomi yang dihadapi, komoditas unggulan, peluang yang belum dimanfaatkan, bantuan pemerintah yang diterima..." rows="4"></textarea>
+            <textarea id="catatan_ekonomi" maxlength="800" placeholder="Hambatan ekonomi yang dihadapi, komoditas unggulan, peluang yang belum dimanfaatkan, bantuan pemerintah yang diterima..." rows="4" required></textarea>
             <span class="char-count" id="cc-ekonomi">0/800</span>
           </div>
         </div>
@@ -1187,7 +1187,7 @@ input[type="range"]::-webkit-slider-thumb {
           <label>Tingkat Keaktifan Kegiatan Keagamaan</label>
           <div class="scale-field">
             <div class="scale-labels"><span>Tidak Aktif</span><span>Sangat Aktif</span></div>
-            <input type="range" id="keaktifan_religi" min="1" max="10" value="5" oninput="updateScale('keaktifan_religi','sv-religi')" />
+            <input type="range" id="keaktifan_religi" min="1" max="10" value="5" oninput="updateScale('keaktifan_religi','sv-religi')" required />
             <div class="scale-value" id="sv-religi">5</div>
           </div>
         </div>
@@ -1206,7 +1206,7 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="field">
           <label>Catatan Kondisi Spiritual</label>
           <div class="textarea-wrap">
-            <textarea id="catatan_spiritual" maxlength="800" placeholder="Dinamika kehidupan keagamaan, tokoh agama yang berpengaruh, ketegangan atau keharmonisan antar umat, tradisi spiritual yang unik..." rows="4"></textarea>
+            <textarea id="catatan_spiritual" maxlength="800" placeholder="Dinamika kehidupan keagamaan, tokoh agama yang berpengaruh, ketegangan atau keharmonisan antar umat, tradisi spiritual yang unik..." rows="4" required></textarea>
             <span class="char-count" id="cc-spiritual">0/800</span>
           </div>
         </div>
